@@ -1,0 +1,22 @@
+// Указываем версию синтаксиса. Всегда используем proto3.
+syntax = "proto3";
+
+// Указываем package для предотвращения конфликтов имен в Go.
+// Это будет пакет ваших сгенерированных файлов.
+option go_package = "/greetpb";
+
+// Объявляем сервис с методами
+service Greeter {
+  // Простой RPC (запрос-ответ)
+  rpc SayHello (HelloRequest) returns (HelloResponse) {}
+}
+
+// Определяем структуру сообщения-запроса
+message HelloRequest {
+  string name = 1; // Поле типа string под номером 1
+}
+
+// Определяем структуру сообщения-ответа
+message HelloResponse {
+  string greeting = 1;
+}
